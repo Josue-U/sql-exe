@@ -131,6 +131,7 @@ print_r($result);
 
 echo "<br><br>La réponse est : 93<br><br>";
 
+
 new_question(11);
 $numberOfcustomers = $db -> query("SELECT customerName FROM customers WHERE state ='NV' OR state='NY' OR country != 'USA' AND creditLimit > '1000.00' ");
 
@@ -139,6 +140,7 @@ $result = $numberOfcustomers -> fetchAll(PDO::FETCH_ASSOC);
 print_r($result);
 
 echo "<br><br>La réponse est : 70<br><br>";
+
 
 new_question(12);
 $customerNoRep = $db -> query("SELECT customerName FROM customers WHERE salesRepEmployeeNumber IS NULL ");
@@ -150,6 +152,26 @@ print_r($result);
 echo "<br><br>La réponse est : 22<br><br>";
 
 new_question(13);
+$commentOrder = $db -> query("SELECT comments FROM orders WHERE comments IS NOT NULL ");
+
+$result = $commentOrder -> fetchAll(PDO::FETCH_ASSOC);
+
+print_r($result);
+
+echo "<br><br>La réponse est : 80<br><br>";
+
+
 new_question(14);
+$caution = $db -> query("SELECT orderNumber FROM orders WHERE comments LIKE '%caution%' ");
+
+$result = $caution -> fetchAll(PDO::FETCH_ASSOC);
+
+print_r($result);
+
+echo "<br><br>La réponse est : 4<br><br>";
+
+
+
 new_question(15);
+
 new_question(16);
