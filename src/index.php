@@ -173,5 +173,85 @@ echo "<br><br>La réponse est : 4<br><br>";
 
 
 new_question(15);
+$creditLimit = $db -> query("SELECT creditLimit FROM customers WHERE country = 'USA' HAVING AVG(creditLimit) ");
+
+$result = $creditLimit -> fetchAll(PDO::FETCH_ASSOC);
+
+print_r($result);
+
+echo "<br><br>La réponse est : 71800.00 <br><br>";
+
 
 new_question(16);
+$commonName = $db ->query("SELECT contactLastName FROM customers ORDER BY contactLastName ASC  ");
+
+$result = $commonName -> fetchAll(PDO::FETCH_ASSOC);
+
+print_r($result);
+
+echo "<br><br>La réponse est : Young<br><br>";
+
+
+new_question(17);
+$validStatus = $db -> query("SELECT status FROM orders ORDER BY status ASC  ");
+
+$result = $validStatus -> fetchAll(PDO::FETCH_ASSOC);
+
+printr($result);
+
+echo "<br><br>La réponse est : Shipped<br><br>";
+
+
+
+new_question(18);
+$country = $db -> query("SELECT DISTINCT country FROM customers WHERE country  !='Austria' OR country != 'Canada' OR country != 'China' OR country != 'Germany' OR country !='Greece' OR country != 'Japan' OR country != 'Phillipines' OR country != 'South Korea' ");
+
+$result = $country -> fetchAll(PDO::FETCH_ASSOC);
+
+print_r($result);
+
+echo "<br><br>La réponse est : China, Greece, South Korea<br><br>";
+
+
+new_question(19);
+$orderNotShipped = $db -> query("SELECT status FROM orders WHERE status != 'Shipped' ");
+
+$result = $orderNotShipped -> fetchAll(PDO::FETCH_ASSOC);
+
+print_r($result);
+
+echo "<br><br>La réponse est : 23 <br><br>";
+
+
+new_question(20);
+$customerPatterson = $db -> query("SELECT employeeNumber FROM employees e INNER JOIN customers c
+ON e.employeeNumber = c.salesRepEmployeeNumber
+WHERE e.lastName = 'Patterson' AND e.firstName = 'Steve' AND c.creditLimit > '100000.00' ");
+
+$result = $customerPatterson -> fetch(PDO::FETCH_ASSOC);
+
+print_r($result);
+
+echo "<br><br>La réponse est :  1216 <br><br>";
+
+
+new_question(21);
+$orderShipped = $db -> query("SELECT COUNT(orderNumber) FROM orders WHERE status ='Shipped' ");
+
+$result = $orderShipped -> fetch(PDO::FETCH_ASSOC);
+
+print_r($result);
+
+echo "<br><br>La réponse est :  303 <br><br>";
+
+
+new_question(22);
+$averageProdInPl = $db -> query("SELECT ");
+
+
+
+new_question(23);
+new_question(24);
+new_question(25);
+new_question(26);
+new_question(27);
